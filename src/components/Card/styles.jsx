@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { mediaMobile } from '../../utils/media';
 
-export const Container = styled.div`
+export const Container = styled.button`
   background: ${props => (props.backColor ? 'var(--green)' : 'var(--shape)')};
   padding: 1.5rem 2rem;
   color: ${props => (props.backColor ? '#fff' : 'var(--title-color)')};

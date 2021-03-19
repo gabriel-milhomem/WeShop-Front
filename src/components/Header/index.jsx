@@ -1,15 +1,7 @@
-import React from 'react';
+import { IoStatsChart } from 'react-icons/io5';
 
 import logoImg from '../../assets/logo.png';
-import logoutImg from '../../assets/logout.svg';
-import {
-  StyledHeader,
-  Content,
-  LeftBox,
-  LogoutButton,
-  Brand,
-  LogoutIcon
-} from './styles';
+import { StyledHeader, Content, LeftBox, ShowPurchases, Brand } from './styles';
 
 export function Header() {
   return (
@@ -19,10 +11,10 @@ export function Header() {
           <img src={logoImg} alt="Logo do WeShop" />
           <Brand> WeShop </Brand>
         </LeftBox>
-        <LogoutButton>
-          <h2> Sair </h2>
-          <LogoutIcon src={logoutImg} alt="Icone de sair" />
-        </LogoutButton>
+        <ShowPurchases>
+          <h2> Pedidos </h2>
+          <IoStatsChart />
+        </ShowPurchases>
       </Content>
     </StyledHeader>
   );

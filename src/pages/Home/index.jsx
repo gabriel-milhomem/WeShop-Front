@@ -1,16 +1,26 @@
 import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
-import { StyledSummary } from './styles';
+import { PurchaseTable } from '../../components/PurchaseTable';
+import { StyledSummary, Dashboard } from './styles';
 
 export function Home() {
   return (
-    <main>
+    <>
       <Header />
-      <StyledSummary>
-        <Card title="Criar" subtitle="Cliente" iconType="client" />
-        <Card title="Criar" subtitle="Produto" iconType="product" />
-        <Card title="Criar" subtitle="Pedido" iconType="order" backColor />
-      </StyledSummary>
-    </main>
+      <Dashboard>
+        <StyledSummary>
+          <Card title="Cadastrar" subtitle="Cliente" iconType="client" />
+          <Card title="Cadastrar" subtitle="Produto" iconType="product" />
+          <Card
+            title="Cadastrar"
+            subtitle="Pedido"
+            iconType="purchase"
+            backColor
+          />
+        </StyledSummary>
+
+        <PurchaseTable />
+      </Dashboard>
+    </>
   );
 }

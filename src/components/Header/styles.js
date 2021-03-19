@@ -22,7 +22,7 @@ export const LeftBox = styled.div`
   align-items: center;
 `;
 
-export const LogoutButton = styled(LeftBox).attrs({ as: 'button' })`
+export const ShowPurchases = styled(LeftBox).attrs({ as: 'button' })`
   cursor: pointer;
   transition: filter 0.2s;
   background: var(--blue-light);
@@ -40,6 +40,13 @@ export const LogoutButton = styled(LeftBox).attrs({ as: 'button' })`
     margin-right: 1.25rem;
     font-size: 1.2rem;
   }
+
+  svg {
+    color: #ffffff;
+    font-size: 1.2rem;
+    position: relative;
+    bottom: 2px;
+  }
 `;
 
 export const Brand = styled.h1`
@@ -47,11 +54,4 @@ export const Brand = styled.h1`
   color: #fff;
   margin-left: 1rem;
   font-size: 2rem;
-`;
-
-export const LogoutIcon = styled.img`
-  color: #ffffff;
-  transform: scale(0.95);
-  position: relative;
-  bottom: 2px;
 `;

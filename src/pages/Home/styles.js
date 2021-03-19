@@ -7,9 +7,7 @@ export const StyledSummary = styled.section`
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 
-  max-width: 1120px;
-  width: 95%;
-  margin: -4.5rem auto 0 auto;
+  margin-top: -4.5rem;
 
   ${mediaMobile} {
     overflow-x: scroll;
@@ -21,4 +19,11 @@ export const StyledSummary = styled.section`
     width: 100%;
     padding-left: 1rem;
   }
+`;
+
+export const Dashboard = styled.main`
+  max-width: 1120px;
+  width: 95%;
+
+  margin: 0 auto;
 `;
