@@ -57,6 +57,11 @@ export default css`
     cursor: not-allowed;
   }
 
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
   h1,
   h2,
   h3,
