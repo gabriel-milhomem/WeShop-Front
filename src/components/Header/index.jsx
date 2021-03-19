@@ -11,7 +11,7 @@ import {
   LogoutIcon
 } from './styles';
 
-export const Header: React.FC = () => {
+export function Header() {
   return (
     <StyledHeader>
       <Content>
@@ -26,4 +26,4 @@ export const Header: React.FC = () => {
       </Content>
     </StyledHeader>
   );
-};
+}

@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+import { mediaTablet, mediaMobile } from '../utils/media';
+
 export default css`
   *,
   *::before,
@@ -10,17 +12,17 @@ export default css`
   }
 
   html {
-    @media (max-width: 1080px) {
+    ${mediaTablet} {
       font-size: 93.75%;
     }
 
-    @media (max-width: 720px) {
+    ${mediaMobile} {
       font-size: 87.5%;
     }
   }
 
   body {
-    background: var(--background-color);
+    background: var(--background);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     color: var(--text-color);

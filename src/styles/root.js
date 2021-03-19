@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 export default css`
   :root {
-    --background: #f0f2f5;
+    --background: #e5e5e5;
     --text-color: #969cb3;
     --title-color: #363f5f;
     --red: #e62e4d;
