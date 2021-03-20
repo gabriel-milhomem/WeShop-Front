@@ -58,6 +58,7 @@ export const LastLine = styled.div`
 `;
 
 export const MathPrice = styled.span`
+  margin-left: 5px;
   font-size: 0.9rem;
   color: var(--text-color);
 `;

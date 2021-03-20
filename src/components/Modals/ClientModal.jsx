@@ -1,7 +1,6 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 
-import AppContext from '../../contexts/AppContext';
 import { success } from '../../libs/notify';
 import api from '../../services/api.js';
 import Button from './Button';
@@ -9,10 +8,7 @@ import Error from './Error';
 import Input from './Input';
 import { Title } from './styles';
 
-Modal.setAppElement('#root');
-
-export default function ClientModal() {
-  const { clientModal, setClientModal } = useContext(AppContext);
+export default function ClientModal({ isOpen, onRequestClose }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -23,7 +19,6 @@ export default function ClientModal() {
   async function handleSubmit(event) {
     try {
       event.preventDefault();
-
       if (disabled) return;
       setDisabled(true);
 
@@ -34,16 +29,10 @@ export default function ClientModal() {
         return;
       }
 
-      const body = {
-        name,
-        email,
-        phone,
-        birthDate
-      };
+      const body = { name, email, phone, birthDate };
       await api.post('/clients', body);
 
       success('Cliente cadastrado com sucesso!');
-      handleCloseClientModal();
     } catch (err) {
       console.error(err);
       setDisabled(false);
@@ -52,21 +41,16 @@ export default function ClientModal() {
         setError(err.response.data.details);
         return;
       }
-
       setError(err.response.data.message);
     }
-  }
-
-  function handleCloseClientModal() {
-    setClientModal(!clientModal);
   }
 
   return (
     <Modal
       className="react-modal-content"
       overlayClassName="react-modal-overlay"
-      isOpen={clientModal}
-      onRequestClose={handleCloseClientModal}
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
     >
       <Title> Cadastrar cliente </Title>
       <form onSubmit={handleSubmit}>

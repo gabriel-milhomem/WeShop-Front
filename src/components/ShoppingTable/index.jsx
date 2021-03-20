@@ -8,8 +8,10 @@ import AppContext from '../../contexts/AppContext';
 import { error, success } from '../../libs/notify';
 import { Table, Head, Body, Container } from './styles';
 
-export function ShoppingTable() {
-  const { showOrders, orders, loading } = useContext(AppContext);
+export function ShoppingTable({ onOpenInfoModal, onOpenOrderModal }) {
+  const { showOrders, orders, loading, setCurrentOrderView } = useContext(
+    AppContext
+  );
   const [disabled, setDisabled] = useState(false);
 
   if (!showOrders) return null;
@@ -52,14 +54,19 @@ export function ShoppingTable() {
             return (
               <tr key={id}>
                 <td>
-                  <BsEye />
+                  <BsEye
+                    onClick={() => {
+                      setCurrentOrderView(id);
+                      onOpenInfoModal();
+                    }}
+                  />
                 </td>
                 <td> {id} </td>
                 <td> {client.name} </td>
                 <td> R$ {total.toString().replaceAll('.', ',')} </td>
                 <td>{`${date.getDate()}/${date.getMonth() + 1}`}</td>
                 <td>
-                  <BsPencil />
+                  <BsPencil onClick={() => onOpenOrderModal()} />
                 </td>
                 <td>
                   <BsTrash onClick={() => handleDelete(id)} />

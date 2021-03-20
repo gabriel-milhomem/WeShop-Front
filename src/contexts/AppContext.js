@@ -1,35 +1,28 @@
 import { createContext, useState } from 'react';
 
+import useLocalStorage from '../hooks/useLocalStorage';
+
 const AppContext = createContext();
 
 export default AppContext;
 
 export function AppProvider({ children }) {
+  const [orders, setOrders] = useLocalStorage([]);
   const [showOrders, setShowOrders] = useState(false);
-  const [infoModal, setInfoModal] = useState(false);
-  const [clientModal, setClientModal] = useState(false);
-  const [productModal, setProductModal] = useState(false);
-  const [orderModal, setOrderModal] = useState(false);
-  const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentOrderView, setCurrentOrderView] = useState(0);
 
   return (
     <AppContext.Provider
       value={{
         showOrders,
         setShowOrders,
-        infoModal,
-        setInfoModal,
-        clientModal,
-        setClientModal,
-        productModal,
-        setProductModal,
-        orderModal,
-        setOrderModal,
         orders,
         setOrders,
         loading,
-        setLoading
+        setLoading,
+        currentOrderView,
+        setCurrentOrderView
       }}
     >
       {children}

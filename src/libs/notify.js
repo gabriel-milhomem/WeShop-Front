@@ -11,9 +11,9 @@ const defaultOptions = {
 };
 
 export function success(message) {
-  return toast.warn(message, defaultOptions);
+  return toast.success(message, defaultOptions);
 }
 
 export function error(message) {
-  return toast.info(message, defaultOptions);
+  return toast.error(message, defaultOptions);
 }

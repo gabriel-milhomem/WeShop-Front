@@ -1,7 +1,6 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 
-import AppContext from '../../contexts/AppContext';
 import { success } from '../../libs/notify';
 import api from '../../services/api';
 import Button from './Button';
@@ -9,18 +8,11 @@ import Error from './Error';
 import Input from './Input';
 import { Title } from './styles';
 
-Modal.setAppElement('#root');
-
-export default function ProductModal() {
-  const { productModal, setProductModal } = useContext(AppContext);
+export default function ProductModal({ isOpen, onRequestClose }) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState('');
-
-  function handleCloseProductModal() {
-    setProductModal(!productModal);
-  }
 
   async function handleSubmit(event) {
     try {
@@ -33,7 +25,6 @@ export default function ProductModal() {
       await api.post('/products', body);
 
       success('Produto cadastrado com sucesso!');
-      handleCloseProductModal();
     } catch (err) {
       console.error(err);
       setDisabled(false);
@@ -46,8 +37,8 @@ export default function ProductModal() {
     <Modal
       className="react-modal-content"
       overlayClassName="react-modal-overlay"
-      isOpen={productModal}
-      onRequestClose={handleCloseProductModal}
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
     >
       <form onSubmit={handleSubmit}>
         <Title> Cadastrar produto </Title>

@@ -6,7 +6,7 @@ import {
 
 import { Container, TopLine } from './styles';
 
-export function Card({ title, subtitle, iconType, backColor }) {
+export function Card({ title, subtitle, iconType, backColor, openModal }) {
   let icon;
 
   if (iconType === 'client') {
@@ -18,7 +18,7 @@ export function Card({ title, subtitle, iconType, backColor }) {
   }
 
   return (
-    <Container backColor={backColor}>
+    <Container onClick={() => openModal()} backColor={backColor}>
       <TopLine>
         <h1> {title} </h1>
         {icon}

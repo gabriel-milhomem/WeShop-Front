@@ -11,61 +11,61 @@ import {
   MathPrice,
   List
 } from './styles';
-Modal.setAppElement('#root');
 
-export default function InfoModal() {
-  const { orders } = useContext(AppContext);
-  const { infoModal, setInfoModal } = useContext(AppContext);
+export default function InfoModal({ isOpen, onRequestClose }) {
+  const { orders, currentOrderView } = useContext(AppContext);
 
-  function handleCloseInfoModal() {
-    setInfoModal(!infoModal);
-  }
+  const order = orders?.find(order => order.id === currentOrderView);
+  const client = order?.client;
+  const products = order?.products;
 
   return (
     <Modal
       className="react-modal-content"
       overlayClassName="react-modal-overlay"
-      isOpen={infoModal}
-      onRequestClose={handleCloseInfoModal}
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
     >
       <InfoSection>
         <Title> Revisar pedido </Title>
         <hr />
         <List>
           <li>
-            <span>Nome: {} </span>
-            <p> Gabriel </p>
+            <span>Nome: </span>
+            <p> {client?.name}</p>
           </li>
           <li>
             <span>Email: </span>
-            <p>gabs@gabs.com</p>
+            <p>{client?.email}</p>
           </li>
           <li>
             <span>Telefone: </span>
-            <p>45 34534-3453</p>
+            <p>{client?.phone}</p>
           </li>
           <li>
             <span>Data de nascimento: </span>
-            <p>23/23/12</p>
+            <p>{client?.birthDate}</p>
           </li>
         </List>
         <hr />
         <Subtitle> Compras </Subtitle>
         <List>
-          <li>
-            <span>
-              {' '}
-              Celular <MathPrice>3 un x 29.34 </MathPrice>{' '}
-            </span>{' '}
-            <p> R$ 23,00</p>
-          </li>
-          <li>
-            <span>
-              {' '}
-              Celular <MathPrice> 3un x 23.32 </MathPrice>
-            </span>{' '}
-            <p> R$ 23,00</p>
-          </li>
+          {products?.map(
+            ({ id, total, price, quantity, name, partialValue }) => (
+              <li key={id}>
+                <span>
+                  {name}
+                  <MathPrice>
+                    {' '}
+                    {`(${quantity} un R$ ${price
+                      .toString()
+                      .replaceAll('.', ',')})`}
+                  </MathPrice>
+                </span>
+                <p> {`R$ ${partialValue.toString().replaceAll('.', ',')}`} </p>
+              </li>
+            )
+          )}
         </List>
         <hr />
         <LastLine>

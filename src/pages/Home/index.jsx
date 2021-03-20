@@ -1,21 +1,29 @@
-import { useContext } from 'react';
+import { useState } from 'react';
 
 import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
+import ClientModal from '../../components/Modals/ClientModal';
+import InfoModal from '../../components/Modals/InfoModal';
+import OrderModal from '../../components/Modals/OrderModal';
+import ProductModal from '../../components/Modals/ProductModal';
 import { ShoppingTable } from '../../components/ShoppingTable';
-import AppContext from '../../contexts/AppContext';
 import { StyledSummary, Dashboard } from './styles';
 
 export function Home() {
-  const {
-    clientModal,
-    productModal,
-    infoModal,
-    orderModal,
-    setClientModal,
-    setProductModal,
-    setOrderModal
-  } = useContext(AppContext);
+  const [infoModal, setInfoModal] = useState(false);
+  const [clientModal, setClientModal] = useState(false);
+  const [productModal, setProductModal] = useState(false);
+  const [orderModal, setOrderModal] = useState(false);
+
+  const handleOpenInfoModal = () => setInfoModal(true);
+  const handleOpenClientModal = () => setClientModal(true);
+  const handleOpenProductModal = () => setProductModal(true);
+  const handleOpenOrderModal = () => setOrderModal(true);
+
+  const handleCloseInfoModal = () => setInfoModal(false);
+  const handleCloseClientModal = () => setClientModal(false);
+  const handleCloseProductModal = () => setProductModal(false);
+  const handleCloseOrderModal = () => setOrderModal(false);
 
   return (
     <>
@@ -23,30 +31,44 @@ export function Home() {
       <Dashboard>
         <StyledSummary>
           <Card
+            id="client"
             title="Cadastrar"
             subtitle="Cliente"
             iconType="client"
-            onClick={e => {
-              console.log(e);
-              setClientModal(!clientModal);
-            }}
+            openModal={handleOpenClientModal}
+          />
+          <ClientModal
+            isOpen={clientModal}
+            onRequestClose={handleCloseClientModal}
           />
           <Card
             title="Cadastrar"
             subtitle="Produto"
             iconType="product"
-            onClick={() => setProductModal(!productModal)}
+            openModal={handleOpenProductModal}
+          />
+          <ProductModal
+            isOpen={productModal}
+            onRequestClose={handleCloseProductModal}
           />
           <Card
             title="Cadastrar"
             subtitle="Pedido"
-            iconType="purchase"
+            iconType="order"
             backColor
-            onClick={() => setOrderModal(!orderModal)}
+            openModal={handleOpenOrderModal}
+          />
+          <OrderModal
+            isOpen={orderModal}
+            onRequestClose={handleCloseOrderModal}
           />
         </StyledSummary>
 
-        <ShoppingTable />
+        <ShoppingTable
+          onOpenOrderModal={handleOpenOrderModal}
+          onOpenInfoModal={handleOpenInfoModal}
+        />
+        <InfoModal isOpen={infoModal} onRequestClose={handleCloseInfoModal} />
       </Dashboard>
     </>
   );
