@@ -1,6 +1,6 @@
 import { Card } from '../../components/Card';
 import { Header } from '../../components/Header';
-import { PurchaseTable } from '../../components/PurchaseTable';
+import { ShoppingTable } from '../../components/ShoppingTable';
 import { StyledSummary, Dashboard } from './styles';
 
 export function Home() {
@@ -19,7 +19,7 @@ export function Home() {
           />
         </StyledSummary>
 
-        <PurchaseTable />
+        <ShoppingTable />
       </Dashboard>
     </>
   );

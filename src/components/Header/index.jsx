@@ -1,9 +1,13 @@
+import { useContext } from 'react';
 import { IoStatsChart } from 'react-icons/io5';
 
 import logoImg from '../../assets/logo.png';
-import { StyledHeader, Content, LeftBox, ShowPurchases, Brand } from './styles';
+import AppContext from '../../contexts/AppContext';
+import { StyledHeader, Content, LeftBox, RightBox, ShowPurchases, Brand, IconRefresh } from './styles';
 
 export function Header() {
+  const { showOrders, setShowOrders } = useContext(AppContext);
+
   return (
     <StyledHeader>
       <Content>
@@ -11,10 +15,13 @@ export function Header() {
           <img src={logoImg} alt="Logo do WeShop" />
           <Brand> WeShop </Brand>
         </LeftBox>
-        <ShowPurchases>
-          <h2> Pedidos </h2>
-          <IoStatsChart />
-        </ShowPurchases>
+        <RightBox>
+          <IconRefresh />
+          <ShowPurchases onClick={() => setShowOrders(!showOrders)}>
+            <h2> Pedidos </h2>
+            <IoStatsChart />
+          </ShowPurchases>
+        </RightBox>
       </Content>
     </StyledHeader>
   );

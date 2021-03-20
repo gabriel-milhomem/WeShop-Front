@@ -1,3 +1,5 @@
+import { BsArrowClockwise } from 'react-icons/bs';
+
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
@@ -54,4 +56,22 @@ export const Brand = styled.h1`
   color: #fff;
   margin-left: 1rem;
   font-size: 2rem;
+`;
+
+export const RightBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const IconRefresh = styled(BsArrowClockwise)`
+  margin-right: 2rem;
+  transform: scale(2);
+  cursor: pointer;
+
+  color: #fff;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
 `;

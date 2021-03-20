@@ -5,11 +5,18 @@ export const Table = styled.table`
   width: 100%;
 
   border-spacing: 0 0.5rem;
+  font-size: 1.05rem;
+
+  svg {
+    transform: scale(1.5);
+    color: var(--blue);
+    cursor: pointer;
+  }
 `;
 
 export const Head = styled.thead`
   th {
-    text-align: left;
+    text-align: center;
     font-weight: 500;
     line-height: 1.5rem;
     padding: 1rem 2rem;
@@ -23,18 +30,19 @@ export const Head = styled.thead`
 
 export const Body = styled.tbody`
   td {
+    text-align: center;
     padding: 1rem 2rem;
     border-radius: 0.25rem;
     background: var(--shape);
     line-height: 1.5rem;
     border: 0;
 
-    &:first-child {
+    &:nth-child(2) {
       color: var(--title-color);
     }
 
-    &::nth-child(3) {
-      color: var(--green) !important;
+    &:nth-child(4) {
+      color: var(--green);
     }
   }
 `;
