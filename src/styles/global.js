@@ -55,7 +55,7 @@ export default css`
   }
 
   [disabled] {
-    opacity: 0.6;
+    opacity: 0.8;
     cursor: not-allowed;
   }
 

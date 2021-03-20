@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 import AppContext from '../../contexts/AppContext';
 import { success } from '../../libs/notify';
-import { api } from '../../services/api.js';
+import api from '../../services/api.js';
 import Button from './Button';
 import Error from './Error';
 import Input from './Input';
@@ -58,14 +58,14 @@ export default function ClientModal() {
   }
 
   function handleCloseClientModal() {
-    setClientModal(false);
+    setClientModal(!clientModal);
   }
 
   return (
     <Modal
       className="react-modal-content"
       overlayClassName="react-modal-overlay"
-      isOpen={true}
+      isOpen={clientModal}
       onRequestClose={handleCloseClientModal}
     >
       <Title> Cadastrar cliente </Title>

@@ -7,9 +7,15 @@ import AppContext from '../../contexts/AppContext';
 import { StyledSummary, Dashboard } from './styles';
 
 export function Home() {
-  const { setClientModal, setProductModal, setOrderModal } = useContext(
-    AppContext
-  );
+  const {
+    clientModal,
+    productModal,
+    infoModal,
+    orderModal,
+    setClientModal,
+    setProductModal,
+    setOrderModal
+  } = useContext(AppContext);
 
   return (
     <>
@@ -20,23 +26,23 @@ export function Home() {
             title="Cadastrar"
             subtitle="Cliente"
             iconType="client"
-            onClick={() => {
-              console.log('alou');
-              setClientModal(true);
+            onClick={e => {
+              console.log(e);
+              setClientModal(!clientModal);
             }}
           />
           <Card
             title="Cadastrar"
             subtitle="Produto"
             iconType="product"
-            onClick={() => setProductModal(true)}
+            onClick={() => setProductModal(!productModal)}
           />
           <Card
             title="Cadastrar"
             subtitle="Pedido"
             iconType="purchase"
             backColor
-            onClick={() => setOrderModal(true)}
+            onClick={() => setOrderModal(!orderModal)}
           />
         </StyledSummary>
 

@@ -8,12 +8,8 @@ Modal.setAppElement('#root');
 export default function OrderModal() {
   const { orderModal, setOrderModal } = useContext(AppContext);
 
-  function handleOpenOrderModal() {
-    setOrderModal(true);
-  }
-
   function handleCloseOrderModal() {
-    setOrderModal(false);
+    setOrderModal(!orderModal);
   }
 
   return (

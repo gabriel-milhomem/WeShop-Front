@@ -48,6 +48,7 @@ export const ShowPurchases = styled(LeftBox).attrs({ as: 'button' })`
     font-size: 1.2rem;
     position: relative;
     bottom: 2px;
+    outline: none !important;
   }
 `;
 
@@ -61,12 +62,19 @@ export const Brand = styled.h1`
 export const RightBox = styled.div`
   display: flex;
   align-items: center;
+
+  button:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const IconRefresh = styled(BsArrowClockwise)`
-  margin-right: 2rem;
-  transform: scale(2);
+  margin-right: 3rem;
+  transform: scale(2.5);
   cursor: pointer;
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
 
   color: #fff;
   transition: filter 0.2s;

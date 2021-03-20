@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 import AppContext from '../../contexts/AppContext';
 import { success } from '../../libs/notify';
-import { api } from '../../services/api';
+import api from '../../services/api';
 import Button from './Button';
 import Error from './Error';
 import Input from './Input';
@@ -19,7 +19,7 @@ export default function ProductModal() {
   const [error, setError] = useState('');
 
   function handleCloseProductModal() {
-    setProductModal(false);
+    setProductModal(!productModal);
   }
 
   async function handleSubmit(event) {

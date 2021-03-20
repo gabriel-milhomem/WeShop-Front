@@ -18,7 +18,7 @@ export function Card({ title, subtitle, iconType, backColor }) {
   }
 
   return (
-    <Container type="button" backColor={backColor}>
+    <Container backColor={backColor}>
       <TopLine>
         <h1> {title} </h1>
         {icon}
