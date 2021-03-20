@@ -69,7 +69,7 @@ export default css`
     font-weight: 600;
   }
 
-  .react-modal-content {
+  .react-modal-overlay {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
 
@@ -83,14 +83,14 @@ export default css`
     justify-content: center;
   }
 
-  .react-modal-overlay {
-    width: 550px;
-    max-width: 100%;
+  .react-modal-content {
+    width: 100%;
+    max-width: 500px;
 
-    background: var(--background);
+    background: #f0f1f5;
     position: relative;
 
-    padding: 3rem;
+    padding: 2rem 3rem;
     border-radius: 0.25rem;
   }
 `;

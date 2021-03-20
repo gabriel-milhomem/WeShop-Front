@@ -3,7 +3,15 @@ import { IoStatsChart } from 'react-icons/io5';
 
 import logoImg from '../../assets/logo.png';
 import AppContext from '../../contexts/AppContext';
-import { StyledHeader, Content, LeftBox, RightBox, ShowPurchases, Brand, IconRefresh } from './styles';
+import {
+  StyledHeader,
+  Content,
+  LeftBox,
+  RightBox,
+  ShowPurchases,
+  Brand,
+  IconRefresh
+} from './styles';
 
 export function Header() {
   const { showOrders, setShowOrders } = useContext(AppContext);

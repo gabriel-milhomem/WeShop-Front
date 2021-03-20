@@ -10,6 +10,7 @@ export function AppProvider({ children }) {
   const [clientModal, setClientModal] = useState(false);
   const [productModal, setProductModal] = useState(false);
   const [orderModal, setOrderModal] = useState(false);
+  const [orders, setOrders] = useState([]);
 
   return (
     <AppContext.Provider
@@ -23,7 +24,9 @@ export function AppProvider({ children }) {
         productModal,
         setProductModal,
         orderModal,
-        setOrderModal
+        setOrderModal,
+        orders,
+        setOrders
       }}
     >
       {children}

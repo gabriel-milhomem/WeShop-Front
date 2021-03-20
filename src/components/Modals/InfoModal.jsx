@@ -2,14 +2,11 @@ import { useContext } from 'react';
 import Modal from 'react-modal';
 
 import AppContext from '../../contexts/AppContext';
+import { Title } from './styles';
 Modal.setAppElement('#root');
 
-export function InfoModal() {
+export default function InfoModal() {
   const { infoModal, setInfoModal } = useContext(AppContext);
-
-  function handleOpenInfoModal() {
-    setInfoModal(true);
-  }
 
   function handleCloseInfoModal() {
     setInfoModal(false);
@@ -22,7 +19,7 @@ export function InfoModal() {
       isOpen={infoModal}
       onRequestClose={handleCloseInfoModal}
     >
-      <h1> Revisar pedido </h1>
+      <Title> Revisar pedido </Title>
     </Modal>
   );
 }

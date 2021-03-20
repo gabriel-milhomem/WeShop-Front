@@ -2,9 +2,10 @@ import { useContext } from 'react';
 import Modal from 'react-modal';
 
 import AppContext from '../../contexts/AppContext';
+import { Title } from './styles';
 Modal.setAppElement('#root');
 
-export function OrderModal() {
+export default function OrderModal() {
   const { orderModal, setOrderModal } = useContext(AppContext);
 
   function handleOpenOrderModal() {
@@ -22,7 +23,7 @@ export function OrderModal() {
       isOpen={orderModal}
       onRequestClose={handleCloseOrderModal}
     >
-      <h1> Fazer pedido </h1>
+      <Title> Fazer pedido </Title>
     </Modal>
   );
 }

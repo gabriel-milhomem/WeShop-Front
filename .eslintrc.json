@@ -33,6 +33,7 @@
     "no-console": "off",
     "semi": [2, "always"],
     "no-use-before-define": "off",
+    "no-unused-vars": "off",
 
     "import-helpers/order-imports": [
       "warn",

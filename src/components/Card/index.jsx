@@ -7,17 +7,18 @@ import {
 import { Container, TopLine } from './styles';
 
 export function Card({ title, subtitle, iconType, backColor }) {
-  const icon =
-    iconType === 'client' ? (
-      <IoAccessibilityOutline />
-    ) : iconType === 'product' ? (
-      <IoDesktopOutline />
-    ) : (
-      <IoReceiptOutline />
-    );
+  let icon;
+
+  if (iconType === 'client') {
+    icon = <IoAccessibilityOutline />;
+  } else if (iconType === 'product') {
+    icon = <IoDesktopOutline />;
+  } else {
+    icon = <IoReceiptOutline />;
+  }
 
   return (
-    <Container backColor={backColor}>
+    <Container type="button" backColor={backColor}>
       <TopLine>
         <h1> {title} </h1>
         {icon}
