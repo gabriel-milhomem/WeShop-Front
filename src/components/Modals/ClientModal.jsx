@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 
+import axios from 'axios';
+
 import { success } from '../../libs/notify';
-import api from '../../services/api.js';
 import Button from './Button';
 import Error from './Error';
 import Input from './Input';
@@ -30,9 +31,15 @@ export default function ClientModal({ isOpen, onRequestClose }) {
       }
 
       const body = { name, email, phone, birthDate };
-      await api.post('/clients', body);
+      await axios.post('http://localhost:3000/api/clients', body);
 
       success('Cliente cadastrado com sucesso!');
+      setDisabled(false);
+      setName('');
+      setEmail('');
+      setPhone('');
+      setBirthDate('');
+      onRequestClose();
     } catch (err) {
       console.error(err);
       setDisabled(false);

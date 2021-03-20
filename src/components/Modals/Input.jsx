@@ -1,4 +1,5 @@
 import React from 'react';
+import CurrencyInput from 'react-currency-input';
 import InputMask from 'react-input-mask';
 
 import styled from 'styled-components';
@@ -25,7 +26,6 @@ const StyledInput = styled(InputMask)`
   &:focus {
     box-shadow: 0 0 5px #46a7d4;
     border: 1px solid #46a7d4;
-    color: var(--text-color);
   }
 
   &::-webkit-inner-spin-button {

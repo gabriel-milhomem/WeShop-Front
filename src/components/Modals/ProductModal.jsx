@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 
+import axios from 'axios';
+
 import { success } from '../../libs/notify';
-import api from '../../services/api';
 import Button from './Button';
 import Error from './Error';
 import Input from './Input';
@@ -10,7 +11,7 @@ import { Title } from './styles';
 
 export default function ProductModal({ isOpen, onRequestClose }) {
   const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
+  let [price, setPrice] = useState('');
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState('');
 
@@ -21,10 +22,16 @@ export default function ProductModal({ isOpen, onRequestClose }) {
       if (disabled) return;
       setDisabled(true);
 
+      console.log(price);
+      price = price * 100;
       const body = { name, price };
-      await api.post('/products', body);
+      await axios.post('http://localhost:3000/api/products', body);
 
       success('Produto cadastrado com sucesso!');
+      setDisabled(false);
+      setName('');
+      setPrice('');
+      onRequestClose();
     } catch (err) {
       console.error(err);
       setDisabled(false);

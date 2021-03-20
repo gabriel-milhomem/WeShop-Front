@@ -50,26 +50,23 @@ export default function InfoModal({ isOpen, onRequestClose }) {
         <hr />
         <Subtitle> Compras </Subtitle>
         <List>
-          {products?.map(
-            ({ id, total, price, quantity, name, partialValue }) => (
-              <li key={id}>
-                <span>
-                  {name}
-                  <MathPrice>
-                    {' '}
-                    {`(${quantity} un R$ ${price
-                      .toString()
-                      .replaceAll('.', ',')})`}
-                  </MathPrice>
-                </span>
-                <p> {`R$ ${partialValue.toString().replaceAll('.', ',')}`} </p>
-              </li>
-            )
-          )}
+          {products?.map(({ id, price, quantity, name, partialValue }) => (
+            <li key={id}>
+              <span>
+                {name}
+                <MathPrice>
+                  {`(${quantity} un R$ ${price
+                    .toString()
+                    .replaceAll('.', ',')})`}
+                </MathPrice>
+              </span>
+              <p> {`R$ ${partialValue.toString().replaceAll('.', ',')}`} </p>
+            </li>
+          ))}
         </List>
         <hr />
         <LastLine>
-          <Subtitle> Total </Subtitle> <Total> R$ 2343</Total>
+          <Subtitle> Total </Subtitle> <Total> {order?.total} </Total>
         </LastLine>
       </InfoSection>
     </Modal>
